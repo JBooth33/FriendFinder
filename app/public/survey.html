@@ -257,7 +257,7 @@
             }
             //if form is valid, then grab info from submitted form
             if (validateForm()) {
-                var newFriend = {
+                var userData = {
                     name: $("#name").val(),
                     photo: $("#photo").val(),
                     scores: [
@@ -270,13 +270,16 @@
                         $("#q7").val(),
                         $("#q8").val(),
                         $("#q9").val(),
-                        $("#q10").val(),
+                        $("#q10").val()
                     ]
                 };
 
-                console.log(newFriend);
+                var currentURL = window.location.origin;
+
+                console.log(userData);
+                
                 //AJAX post friend data to friends API
-                $.post("/api/friends", newFriend, function (data) {
+                $.post("/api/friends", userData, function (data) {
                     $("#match-name").text(data.name);
                     $("#match-img").attr("src", data.photo);
 
